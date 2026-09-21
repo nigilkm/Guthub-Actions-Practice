@@ -1,20 +1,12 @@
-name: Node.js CI
+name: Manual Deployment
 
 on:
-  push:
+  workflow_dispatch:
 
 jobs:
-  build:
+  deploy:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
-
-      - name: Install dependencies
-        working-directory: ./sample-app
-        run: npm install
-
-      - name: Run tests
-        working-directory: ./sample-app
-        run: npm test
+      - name: Deploy application
+        run: echo "Deploying application..."
