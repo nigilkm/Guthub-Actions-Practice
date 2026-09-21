@@ -1,20 +1,27 @@
-name: Deploy Application
+name: Node.js CI
 
 on:
-  workflow_dispatch:
-    inputs:
-      environment:
-        description: "Choose deployment environment"
-        required: true
-        type: choice
-        options:
-          - staging
-          - production
+  push:
+    branches:
+      - main
 
 jobs:
-  deploy:
+  build:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Show environment
-        run: echo "Deploying to ${{ inputs.environment }}"
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Install dependencies
+        working-directory: ./sample-app
+        run: npm install
+
+      - name: Run tests
+        working-directory: ./sample-app
+        run: npm test
