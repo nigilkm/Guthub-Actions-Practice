@@ -2,28 +2,26 @@ name: Node.js CI
 
 on:
   push:
-    branches:
-      - main
+    branches: [main]
+
+env:
+  APP_NAME: my-node-app
+  NODE_VERSION: 20
 
 jobs:
   build:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
+      - name: Display variables
+        run: |
+          echo "App: $APP_NAME"
+          echo "Node version: $NODE_VERSION"
 
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: 24
-          cache: npm
-          cache-dependency-path: ./sample-app/package-lock.json
+  test:
+    runs-on: ubuntu-latest
 
-      - name: Install dependencies
-        working-directory: ./sample-app
-        run: npm ci
-
-      - name: Run tests
-        working-directory: ./sample-app
-        run: npm test
+    steps:
+      - name: Display variables
+        run: |
+          echo "App: $APP_NAME"
