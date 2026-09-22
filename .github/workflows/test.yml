@@ -7,21 +7,22 @@ on:
 env:
   APP_NAME: my-node-app
   NODE_VERSION: 20
+  APP_ENV: Prod
 
 jobs:
   build:
     runs-on: ubuntu-latest
 
-    steps:
-      - name: Display variables
-        run: |
-          echo "App: $APP_NAME"
-          echo "Node version: $NODE_VERSION"
+    env:
+      APP_ENV: development
 
-  test:
+    steps:
+      - name: Build application
+        run: echo "Environment: $APP_ENV"
+
+  deploy:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Display variables
-        run: |
-          echo "App: $APP_NAME"
+      - name: Deploy application
+        run: echo "Environment: $APP_ENV"
