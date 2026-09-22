@@ -1,28 +1,14 @@
-name: Node.js CI
+name: Context Demo
 
-on:
-  push:
-    branches: [main]
-
-env:
-  APP_NAME: my-node-app
-  NODE_VERSION: 20
-  APP_ENV: Prod
+on: push
 
 jobs:
-  build:
-    runs-on: ubuntu-latest
-
-    env:
-      APP_ENV: development
-
-    steps:
-      - name: Build application
-        run: 'echo "Environment: $APP_ENV"'
-
-  deploy:
+  demo:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Deploy application
-        run: 'echo "Environment: $APP_ENV"'
+      - name: Show repository
+        run: echo "${{ github.repository }}"
+
+      - name: Show branch
+        run: echo "${{ github.ref_name }}"
