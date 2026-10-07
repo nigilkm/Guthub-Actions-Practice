@@ -21,12 +21,12 @@ jobs:
       - name: Build and Push Docker Image
         uses: docker/build-push-action@v7
         with:
-          context: .
+          context: ./project-files
           push: true
           tags: nigilkm/githubactions-demo:v1.0.1
 
       - name: Run Container
-        run: docker run -d -p 5000:5000 --name cwvj-flask-container cloudwithvarjosh/cwvj-flask-app:v1.0.1
+        run: docker run -d -p 5000:5000 --name cwvj-flask-container nigilkm/githubactions-demo:v1.0.1
 
       - name: Smoke test
         run: |
