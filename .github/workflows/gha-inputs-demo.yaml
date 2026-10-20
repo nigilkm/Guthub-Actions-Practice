@@ -1,4 +1,4 @@
-name: 01 - Type 1 Workflow Inputs Demo
+name: 01 - Type 1 Workflow Inputs Demo.
 
 on:
   workflow_dispatch:
