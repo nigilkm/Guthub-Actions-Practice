@@ -21,7 +21,7 @@ on:
 
 env:
   APPLICATION_NAME: cwvj-flask-app
-  DOCKER_USERNAME: cloudwithvarjosh
+  DOCKER_USERNAME: nigilkm
   IMAGE_TAG: v1.0.1
   
 jobs:
@@ -102,3 +102,9 @@ jobs:
           sleep 5
           curl http://localhost:5000/health
           echo "Smoke test completed successfully."
+		  
+	  - name: Deploy to Kubernetes
+        if: ${{ inputs.environment == 'prod' }}
+        run: |
+          echo "Deploying application to Production Kubernetes Cluster..."
+          echo "Deployment completed successfully."
